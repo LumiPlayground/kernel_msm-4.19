@@ -513,6 +513,7 @@ dtb-$(CONFIG_ARCH_SDM429) += sdm429-mtp.dtb \
 endif
 else
 # dts start
+dtb-$(CONFIG_ARCH_QM215) += qm215-sugarcane.dtb
 endif
 
 always		:= $(dtb-y)
