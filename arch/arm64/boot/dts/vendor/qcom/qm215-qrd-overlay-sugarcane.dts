@@ -1,0 +1,10 @@
+/dts-v1/;
+/plugin/;
+
+#include "qm215-qrd.dtsi"
+#include "vin8937/qm215-qrd-sugarcane.dtsi"
+
+/ {
+	model = "QRD";
+	qcom,board-id = <0x0b 4>;
+};

@@ -1,0 +1,47 @@
+#include "dsi-panel-jd9365-hd-video.dtsi"
+
+&soc {
+	i2c@78b7000 {
+		status = "ok";
+		focaltech@38 {
+			compatible = "focaltech,fts";
+			reg = <0x38>;
+			interrupt-parent = <&tlmm>;
+			interrupts = <65 0x2008>;
+			vdd-supply = <&pm8916_l17>;
+			vcc_i2c-supply = <&pm8916_l5>;
+			focaltech,irq-gpio = <&tlmm 65 0x00>;
+			focaltech,reset-gpio = <&tlmm 64 0x00>;
+			focaltech,max-touch-number = <5>;
+			focaltech,display-coords = <0 0 720 1520>;
+			status = "ok";
+		};
+	};
+
+	i2c@78b6000 {
+        status = "ok";
+		fan54015_chg: fan54015_chg@6a {
+			compatible = "fairchild, fan54015_chg";
+			reg = <0x6a>;
+			interrupt-parent = <&tlmm>;
+			interrupts = <13 8>;
+			pinctrl-names = "default";
+			qcom,disable-gpio = <&tlmm 12 0x0>;
+			regulator-name = "fan54015_chg";
+			status = "ok";
+		};
+	};
+};
+
+&i2c_5 { /* BLSP2 QUP1 (NFC) */
+	status = "disabled";
+};
+
+&mdss_dsi0 {
+	qcom,dsi-pref-prim-pan = <&dsi_jd9365_hd_video>;
+};
+
+&dsi_jd9365_hd_video {
+	qcom,panel-supply-entries = <&dsi_panel_pwr_supply>;
+	qcom,cont-splash-enabled;
+};

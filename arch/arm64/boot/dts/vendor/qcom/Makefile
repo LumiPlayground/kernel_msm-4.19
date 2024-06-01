@@ -512,7 +512,10 @@ dtb-$(CONFIG_ARCH_SDM429) += sdm429-mtp.dtb \
 	sda429-cdp.dtb
 endif
 else
-# dts start
+# dts/dtbo start
+dtbo-$(CONFIG_ARCH_QM215) +=qm215-qrd-overlay-sugarcane.dtbo
+qm215-qrd-overlay-sugarcane.dtbo-base := qm215-sugarcane.dtb
+
 dtb-$(CONFIG_ARCH_QM215) += qm215-sugarcane.dtb
 endif
 
